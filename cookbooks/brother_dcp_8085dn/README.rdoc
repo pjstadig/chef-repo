@@ -1,0 +1,9 @@
+= DESCRIPTION: 
+
+Installs and configures the printer drivers for the Brother DCP-8085DN
+Copier-Printer-Scanner.
+
+= REQUIREMENTS:
+
+Platform: 
+* Ubuntu 10.10
