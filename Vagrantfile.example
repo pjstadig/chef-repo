@@ -1,0 +1,11 @@
+CHEF_REPO = File.expand_path(File.dirname(__FILE__)) if not defined? CHEF_REPO
+
+Vagrant::Config.run do |config|
+  config.vm.box = "lucid-server-amd64"
+  config.vm.provisioner = :chef_solo
+  config.chef.cookbooks_path = ["#{CHEF_REPO}/cookbooks"]
+  config.chef.roles_path = ["#{CHEF_REPO}/roles"]
+  config.chef.run_list.clear
+  #config.chef.add_recipe("vagrant")
+  #config.chef.add_role("vagrant")
+end

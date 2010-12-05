@@ -17,9 +17,12 @@
 # limitations under the License.
 #
 
+include_recipe "apt"
 package "cups"
-execute "aa-complain cupsd"
-execute "mkdir /usr/share/cups/model" do
-  not_if { File.exists?("/usr/share/cups/model") }
+service "cups" do
+  if node.platform == "ubuntu" && node.platform_version == "10.04"
+    provider Chef::Provider::Service::Init::Debian
+  end
 end
 
+execute "aa-complain cupsd"

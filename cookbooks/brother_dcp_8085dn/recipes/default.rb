@@ -22,21 +22,38 @@ include_recipe "brother_dcp_8085dn::ppd"
 
 package "ia32-libs"
 
-execute "ln -s /etc/init.d/cups /etc/init.d/lpd" do
-  not_if { File.exists?("/etc/init.d/lpd") }
+if node.platform == "ubuntu" && node.platform_version == "10.10"
+  execute "cp /etc/init/cups.conf /etc/init/lpd.conf" do
+    not_if { File.exists?("/etc/init/lpd.conf") }
+  end
 end
 
-cache_dir = Chef::FileCache.create_path([Chef::Config[:file_cache_path], "brother_dcp_8085dn"])
-remote_file "#{cache_dir}/lpr.deb" do
-  source "http://www.brother.com/pub/bsc/linux/dlf/dcp8085dnlpr-2.0.3-1.i386.deb"
+link "/etc/init.d/lpd" do
+  to "/etc/init.d/cups"
 end
 
-remote_file "#{cache_dir}/cupswrapper.deb" do
-  source "http://www.brother.com/pub/bsc/linux/dlf/cupswrapperDCP8085DN-2.0.4-1.i386.deb"
+lpr_deb = "dcp8085dnlpr-2.0.3-1.i386.deb"
+lpr_deb_path = "#{Chef::Config[:file_cache_path]}/#{lpr_deb}"
+remote_file lpr_deb_path do
+  source "http://www.brother.com/pub/bsc/linux/dlf/#{lpr_deb}"
+  backup false
 end
 
-execute "dpkg -i --force-all #{cache_dir}/lpr.deb && dpkg -i --force-all #{cache_dir}/cupswrapper.deb" do
-  not_if "dpkg  -l | grep  Brother"
+cups_deb = "cupswrapperDCP8085DN-2.0.4-1.i386.deb"
+cups_deb_path = "#{Chef::Config[:file_cache_path]}/#{cups_deb}"
+remote_file cups_deb_path do
+  source "http://www.brother.com/pub/bsc/linux/dlf/#{cups_deb}"
+  backup false
 end
 
-execute "/etc/init.d/cups restart"
+dpkg_package "brother-8085dn-lpr" do
+  source lpr_deb_path
+  options "--force-all"
+  notifies :restart, "service[cups]"
+end
+
+dpkg_package "brother-8085dn-cups-wrapper" do
+  source cups_deb_path
+  options "--force-all"
+  notifies :restart, "service[cups]"
+end

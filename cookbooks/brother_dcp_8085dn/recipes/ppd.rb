@@ -19,18 +19,21 @@
 
 include_recipe "brother_dcp_8085dn::common"
 
-cache_dir = Chef::FileCache.create_path([Chef::Config[:file_cache_path], "brother_dcp_8085dn"])
-remote_file "#{cache_dir}/BR8085_2_GPL.ppd.gz" do
-  source "http://www.brother.com/pub/bsc/linux/dlf/BR8085_2_GPL.ppd.gz"
+ppd_file = "BR8085_2_GPL.ppd"
+remote_file "#{Chef::Config[:file_cache_path]}/#{ppd_file}.gz" do
+  source "http://www.brother.com/pub/bsc/linux/dlf/#{ppd_file}.gz"
+  backup false
 end
 
-execute "gunzip BR8085_2_GPL.ppd.gz" do
-  cwd cache_dir
-  not_if { File.exists?("#{cache_dir}/BR8085_2_GPL.ppd") }
+execute "gunzip #{ppd_file}.gz && cp #{ppd_file} /usr/share/ppd/" do
+  cwd Chef::Config[:file_cache_path]
+  not_if { File.exists?("/usr/share/ppd/#{ppd_file}") }
+  notifies :create, "file[/usr/share/ppd/#{ppd_file}]"
 end
 
-execute "cp #{cache_dir}/BR8085_2_GPL.ppd /usr/share/cups/model && chmod 644 /usr/share/cups/model/BR8085_2_GPL.ppd && chown root:root /usr/share/cups/model/BR8085_2_GPL.ppp" do
-  not_if { File.exists?("/usr/share/cups/model/BR8085_2_GPL.ppd") }
+file "/usr/share/ppd/#{ppd_file}" do
+  owner "root"
+  group "root"
+  mode  "0644"
+  notifies :restart, "service[cups]"
 end
-
-execute "/etc/init.d/cups restart"
