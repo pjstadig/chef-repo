@@ -1,0 +1,5 @@
+Example knife command, it works, but the AMI has a 15GB EBS root, which is over
+the 10GB limit for the free tier.
+
+knife ec2 server create "recipe[java]" -f t1.micro -I ~/.ssh/aws.pem -i ami-4a0df923 -G default -S aws -x ubuntu -Z us-east-1d
+
