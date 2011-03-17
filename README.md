@@ -64,3 +64,14 @@ Next Steps
 ==========
 
 Read the README file in each of the subdirectories for more information about what goes in those directories.
+
+Examples
+========
+
+Example knife command for a 64-bit 10.04.2 with 8GB EBS root:
+
+    knife ec2 server create "role[sun_java]" -f t1.micro -I ~/.ssh/aws.pem -i ami-3202f25b -G default -S aws -x ubuntu -Z us-east-1d
+
+Example knife command for 64-bit 10.10 with 8GB EBS root:
+
+    knife ec2 server create "role[sun_java]" -f t1.micro -I ~/.ssh/aws.pem -i ami-cef405a7 -G default -S aws -x ubuntu -Z us-east-1d
