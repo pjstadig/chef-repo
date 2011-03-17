@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-Ohai::Config[:plugin_path] << node['ohai']['plugin_path']
+Ohai::Config[:plugin_path].unshift(node['ohai']['plugin_path'])
 Chef::Log.info("ohai plugins will be at: #{node['ohai']['plugin_path']}")
 
 d = directory node['ohai']['plugin_path'] do
