@@ -3,3 +3,6 @@ the 10GB limit for the free tier.
 
 knife ec2 server create "recipe[java]" -f t1.micro -I ~/.ssh/aws.pem -i ami-4a0df923 -G default -S aws -x ubuntu -Z us-east-1d
 
+Example knife command for 64bit 10.10 instance storage AMI
+
+knife ec2 server create "recipe[java]" -f t1.micro -I ~/.ssh/aws.pem -i ami-08f40561 -G default -S aws -x ubuntu -Z us-east-1d
