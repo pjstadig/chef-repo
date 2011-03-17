@@ -1,48 +1,48 @@
 {
-  "name": "rabbitmq_chef",
+  "conflicting": {
+  },
   "description": "Installs the RabbitMQ AMQP Broker for use on a Chef Server.",
   "long_description": "",
+  "providing": {
+  },
+  "recipes": {
+    "rabbitmq_chef": "Install and configure rabbitmq specifically for a Chef Server"
+  },
+  "attributes": {
+  },
   "maintainer": "Opscode, Inc.",
-  "maintainer_email": "cookbooks@opscode.com",
-  "license": "Apache 2.0",
-  "platforms": {
-    "centos": [
-
-    ],
-    "redhat": [
-
-    ],
-    "fedora": [
-
-    ],
-    "ubuntu": [
-
-    ],
-    "debian": [
-
-    ]
+  "replacing": {
   },
   "dependencies": {
     "erlang": [
 
     ]
   },
-  "recommendations": {
-  },
-  "suggestions": {
-  },
-  "conflicting": {
-  },
-  "providing": {
-  },
-  "replacing": {
-  },
-  "attributes": {
-  },
+  "maintainer_email": "cookbooks@opscode.com",
   "groupings": {
   },
-  "recipes": {
-    "rabbitmq_chef": "Install and configure rabbitmq specifically for a Chef Server"
+  "platforms": {
+    "debian": [
+
+    ],
+    "fedora": [
+
+    ],
+    "centos": [
+
+    ],
+    "ubuntu": [
+
+    ],
+    "redhat": [
+
+    ]
   },
-  "version": "0.10.4"
+  "version": "0.10.4",
+  "recommendations": {
+  },
+  "license": "Apache 2.0",
+  "name": "rabbitmq_chef",
+  "suggestions": {
+  }
 }
