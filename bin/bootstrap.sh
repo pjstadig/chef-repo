@@ -22,7 +22,11 @@ $sudo $gem install --no-rdoc --no-ri chef
 $mkdir -p ~/src
 cd ~/src
 if [ ! -e chef-repo ]; then
-    $git clone git@github.com:pjstadig/chef-repo.git
+    if $git clone git@github.com:pjstadig/chef-repo.git; then
+        cd chef-repo
+        $sudo $chef_solo -c solo.rb -j `hostname`.json
+    fi
+else
+    cd chef-repo
+    $sudo $chef_solo -c solo.rb -j `hostname`.json
 fi
-cd chef-repo
-$sudo $chef_solo -c solo.rb -j `hostname`.json
