@@ -19,3 +19,4 @@
 include_recipe "java"
 package "ttf-inconsolata"
 include_recipe "virtualbox"
+package "rabbitmq-server"
