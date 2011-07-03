@@ -16,5 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe "java::default"
+include_recipe "java"
 package "ttf-inconsolata"
+include_recipe "virtualbox"
