@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: samson
+# Cookbook Name:: jce
 # Recipe:: default
 #
 # Copyright 2011, Paul Stadig
@@ -16,12 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe "java"
-package "ttf-inconsolata"
-include_recipe "virtualbox"
-package "rabbitmq-server"
-include_recipe "riak"
-package "socat"
-package "mysql-server"
-package "p7zip-full"
-include_recipe "jce"
+cookbook_file "/usr/lib/jvm/java-6-sun/jre/lib/security/US_export_policy.jar" do
+  mode "0644"
+end
+
+cookbook_file "/usr/lib/jvm/java-6-sun/jre/lib/security/local_policy.jar" do
+  mode "0644"
+end
