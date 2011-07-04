@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: samson
+# Cookbook Name:: dropbox
 # Recipe:: default
 #
 # Copyright 2011, Paul Stadig
@@ -16,19 +16,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe "java"
-package "ttf-inconsolata"
-include_recipe "virtualbox"
-package "rabbitmq-server"
-include_recipe "riak"
-package "socat"
-package "mysql-server"
-package "p7zip-full"
-include_recipe "jce"
-package "readpst"
-cookbook_file "/etc/default/keyboard" do
-  mode "0644"
+execute "apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E" do
+  not_if "sudo apt-key finger | grep \"1C61 A265 6FB5 7B7E 4DE0  F4C1 FC91 8B33 5044 912E\""
 end
-package "xulrunner-2.0"
-package "rlwrap"
-include_recipe "dropbox"
+
+cookbook_file "/etc/apt/sources.list.d/dropbox.list" do
+  mode "0644"
+  notifies :run, "execute[apt-get update]", :immediately
+end
+
+package "nautilus-dropbox"
