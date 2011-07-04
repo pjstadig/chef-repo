@@ -29,3 +29,4 @@ package "readpst"
 cookbook_file "/etc/default/keyboard" do
   mode "0644"
 end
+package "xulrunner-2.0"
