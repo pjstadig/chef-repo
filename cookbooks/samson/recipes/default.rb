@@ -32,3 +32,5 @@ end
 package "xulrunner-2.0"
 package "rlwrap"
 include_recipe "dropbox"
+package "skype"
+package "pidgin-skype"
