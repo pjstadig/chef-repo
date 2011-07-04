@@ -26,3 +26,6 @@ package "mysql-server"
 package "p7zip-full"
 include_recipe "jce"
 package "readpst"
+cookbook_file "/etc/default/keyboard" do
+  mode "0644"
+end
