@@ -50,3 +50,5 @@ dpkg_package "skype4pidgin" do
   only_if "test -e /tmp/skype4pidgin.deb"
   not_if "dpkg -s skype4pidgin"
 end
+
+package "libnotify-bin"
