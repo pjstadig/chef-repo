@@ -33,5 +33,20 @@ package "xulrunner-2.0"
 package "rlwrap"
 include_recipe "dropbox"
 package "skype"
-package "pidgin-skype"
 package "keychain"
+
+package "pidgin"
+package "empathy" do
+  action :purge
+end
+
+remote_file "/tmp/skype4pidgin.deb" do
+  source "http://eion.robbmob.com/skype4pidgin.deb"
+  not_if "dpkg -s skype4pidgin"
+end
+
+dpkg_package "skype4pidgin" do
+  source "/tmp/skype4pidgin.deb"
+  only_if "test -e /tmp/skype4pidgin.deb"
+  not_if "dpkg -s skype4pidgin"
+end
