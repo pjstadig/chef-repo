@@ -52,3 +52,10 @@ dpkg_package "skype4pidgin" do
 end
 
 package "libnotify-bin"
+cookbook_file "/etc/modprobe.d/w510.conf" do
+  mode "0644"
+end
+
+cookbook_file "/usr/share/X11/xorg.conf.d/50-nvidia.conf" do
+  mode "0644"
+end
