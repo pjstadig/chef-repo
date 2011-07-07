@@ -9,4 +9,11 @@ Vagrant::Config.run do |config|
     #chef.add_recipe("vagrant")
     #chef.add_role("vagrant")
   end
+  #config.ssh.forward_agent = true
+  #config.ssh.private_key_path = "~/.ssh/id_rsa"
+
+  #config.vm.share_folder("Dropbox", "/home/#{config.ssh.username}/Dropbox", "~/Dropbox")
+  #config.vm.forward_port "riak", 8098, 8098
+  #config.vm.forward_port "rabbitmq", 5672, 5672
+  #config.vm.forward_port "elasticsearch", 9200, 9200
 end
