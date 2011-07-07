@@ -74,6 +74,7 @@ remote_file "/tmp/riak_pkg/#{package_file}" do
   owner "root"
   mode 0644
   checksum node[:riak][:package][:source_checksum]
+  not_if "dpkg -s riak"
 end
 
 case node[:riak][:package][:type]
@@ -85,6 +86,8 @@ when "binary"
                                 [ "ubuntu", "debian" ] => {"default" => Chef::Provider::Package::Dpkg},
                                 [ "redhat", "centos", "fedora", "suse" ] => {"default" => Chef::Provider::Package::Rpm}
                                 )
+    only_if "test -e /tmp/riak/pkg/#{package_file}"
+    not_if "dpkg -s riak"
   end
 when "source"
   execute "riak-src-unpack" do
