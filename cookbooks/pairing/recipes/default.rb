@@ -16,11 +16,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-%w{emacs tmux socat p7zip-full readpst rlwrap curl git-core}.each do |p|
+%w{emacs tmux socat p7zip-full readpst rlwrap curl git-core rabbitmq-server mysql-server}.each do |p|
   package p
 end
 include_recipe "java"
 include_recipe "jce"
+include_recipe "riak"
 
 # TODO: setup lotus
 # TODO: install 32-bit JVM?
