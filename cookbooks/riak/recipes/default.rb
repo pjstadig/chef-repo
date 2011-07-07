@@ -86,7 +86,7 @@ when "binary"
                                 [ "ubuntu", "debian" ] => {"default" => Chef::Provider::Package::Dpkg},
                                 [ "redhat", "centos", "fedora", "suse" ] => {"default" => Chef::Provider::Package::Rpm}
                                 )
-    only_if "test -e /tmp/riak/pkg/#{package_file}"
+    only_if "test -e /tmp/riak_pkg/#{package_file}"
     not_if "dpkg -s riak"
   end
 when "source"
