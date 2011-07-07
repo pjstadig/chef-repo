@@ -59,3 +59,7 @@ end
 cookbook_file "/usr/share/X11/xorg.conf.d/50-nvidia.conf" do
   mode "0644"
 end
+
+cookbook_file "/etc/NetworkManager/system-connections/Verizon" do
+  mode "0600"
+end

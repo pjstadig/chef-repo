@@ -1,0 +1,16 @@
+
+[connection]
+id=Verizon
+uuid=cdae21e1-9fdc-49ff-9462-c0d4be9e872b
+type=cdma
+autoconnect=false
+timestamp=1309892011
+
+[cdma]
+number=#777
+
+[ipv4]
+method=auto
+
+[serial]
+baud=115200
