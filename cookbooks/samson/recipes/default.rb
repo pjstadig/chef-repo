@@ -63,3 +63,5 @@ end
 cookbook_file "/etc/NetworkManager/system-connections/Verizon" do
   mode "0600"
 end
+
+package "shutter"
