@@ -65,3 +65,4 @@ cookbook_file "/etc/NetworkManager/system-connections/Verizon" do
 end
 
 package "shutter"
+package "desktopcouch-ubuntuone"
