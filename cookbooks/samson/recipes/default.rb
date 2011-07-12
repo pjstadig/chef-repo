@@ -66,3 +66,9 @@ end
 
 package "shutter"
 package "desktopcouch-ubuntuone"
+
+include_recipe "iptables"
+
+iptables_rule "10vagrant" do
+  source "vagrant.erb"
+end
