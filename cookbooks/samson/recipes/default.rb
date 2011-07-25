@@ -74,3 +74,5 @@ iptables_rule "10vagrant" do
 end
 
 include_recipe "brother_dcp_8085dn"
+
+package "cups-pdf"
