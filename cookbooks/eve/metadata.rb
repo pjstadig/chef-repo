@@ -1,0 +1,5 @@
+maintainer       "Paul Stadig"
+maintainer_email "paul@stadig.name"
+license          "Apache 2.0"
+description      "Configures eve."
+version          "0.0.1"
