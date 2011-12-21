@@ -17,7 +17,7 @@ if [ ! -e /etc/apt/apt.conf.d/99no-install-recommends ]; then
     $sudo $bash -c "$echo 'APT::Install-Recommends \"0\";' > /etc/apt/apt.conf.d/99no-install-recommends"
 fi
 
-$sudo $apt_get install -y --no-install-recommends ruby-full rubygems git emacs
+$sudo $apt_get install -y --no-install-recommends build-essential ruby-full rubygems git emacs
 $sudo $gem install --no-rdoc --no-ri chef
 $mkdir -p ~/src
 cd ~/src
