@@ -6,7 +6,7 @@ apt_get=/usr/bin/apt-get
 gem=/usr/bin/gem
 mkdir=/bin/mkdir
 git=/usr/bin/git
-chef_solo=/var/lib/gems/1.8/bin/chef-solo
+chef_solo=/usr/local/bin/chef-solo
 
 if [ -z `hostname -d` ]; then
     $echo "Please manually configure an FQDN, then re-run this script";
