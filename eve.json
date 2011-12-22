@@ -1,1 +1,1 @@
-{ "run_list" : [ "eve" ] }
+{ "run_list" : [ "role[eve]" ] }
