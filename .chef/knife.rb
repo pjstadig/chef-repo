@@ -1,6 +1,5 @@
 CHEF_HOME = File.expand_path(ENV["HOME"] + "/.chef")
 CHEF_REPO = File.expand_path(File.dirname(__FILE__) + "/..")
-AWS       = YAML.load(File.read(ENV["HOME"] + "/.aws.yml"))
 
 log_level                     :info
 log_location                  STDOUT
@@ -15,5 +14,10 @@ cookbook_path                 ["#{CHEF_REPO}/cookbooks"]
 cookbook_copyright            "Paul Stadig"
 cookbook_email                "paul@stadig.name"
 cookbook_license              "apachev2"
-knife[:aws_access_key_id]     = AWS["AWS_ACCESS_KEY_ID"]
-knife[:aws_secret_access_key] = AWS["AWS_SECRET_ACCESS_KEY"]
+
+AWS_CONFIG = ENV["HOME"] + "/.aws.yml"
+if File.exists?(AWS_CONFIG)
+  AWS = YAML.load(File.read(AWS_CONFIG))
+  knife[:aws_access_key_id]     = AWS["AWS_ACCESS_KEY_ID"]
+  knife[:aws_secret_access_key] = AWS["AWS_SECRET_ACCESS_KEY"]
+end
