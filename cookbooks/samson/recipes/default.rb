@@ -129,11 +129,11 @@ end
 user "ubuntu" do
   action :remove
   ignore_failure true
-  notifies :remove, resources(:directory => "/home/ubuntu"), :immediately
+  notifies :delete, resources(:directory => "/home/ubuntu"), :immediately
 end
 
 group "ubuntu" do
   action :remove
   ignore_failure true
-  notifies :remove, resources(:directory => "/home/ubuntu"), :immediately
+  notifies :delete, resources(:directory => "/home/ubuntu"), :immediately
 end
