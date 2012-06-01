@@ -106,6 +106,7 @@ apt_repository "virtualbox" do
   distribution node['lsb']['codename']
   components ["contrib"]
   key "http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc"
+  notifies :run, resources(:execute => "apt-get update"), :immediately
 end
 
 package "virtualbox-4.1"
