@@ -52,13 +52,7 @@ package "python-gpgme" # required for dropbox
 package "libdbus-ruby" # required for skyyy
 package "openvpn"
 
-# replace xfce4-notifyd with notify-osd
-package "notify-osd"
-file "/usr/share/dbus-1/services/org.xfce.xfce4-notifyd.Notifications.service" do
-  action :delete
-end
-
-# setup xfce and xmonad
+# setup xmonad
 package "xcompmgr"
 package "xmonad"
 package "libghc-xmonad-dev"
