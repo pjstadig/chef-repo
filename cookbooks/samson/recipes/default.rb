@@ -127,7 +127,7 @@ gem_package "vagrant" do
 end
 
 directory "/home/ubuntu" do
-  action :delete
+  action :nothing
   recursive true
   ignore_failure true
 end
@@ -135,9 +135,11 @@ end
 user "ubuntu" do
   action :remove
   ignore_failure true
+  notifies :remove, resources(:directory => "/home/ubuntu"), :immediately
 end
 
 group "ubuntu" do
   action :remove
   ignore_failure true
+  notifies :remove, resources(:directory => "/home/ubuntu"), :immediately
 end
