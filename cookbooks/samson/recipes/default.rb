@@ -120,6 +120,11 @@ gem_package "vagrant" do
   version "1.0.3"
 end
 
+package "gnome-panel"
+package "indicator-applet"
+package "indicator-applet-session"
+package "indicator-applet-appmenu"
+
 directory "/home/ubuntu" do
   action :nothing
   recursive true
