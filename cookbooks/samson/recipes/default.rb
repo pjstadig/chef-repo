@@ -125,6 +125,8 @@ package "indicator-applet"
 package "indicator-applet-session"
 package "indicator-applet-appmenu"
 
+package "xfce4-terminal"
+
 directory "/home/ubuntu" do
   action :nothing
   recursive true
