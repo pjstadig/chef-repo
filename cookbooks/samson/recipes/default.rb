@@ -121,6 +121,7 @@ gem_package "vagrant" do
 end
 
 package "gnome-panel"
+package "gnome-panel-control"
 package "indicator-applet"
 package "indicator-applet-session"
 package "indicator-applet-appmenu"
