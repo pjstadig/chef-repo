@@ -126,6 +126,7 @@ package "indicator-applet-session"
 package "indicator-applet-appmenu"
 
 package "xfce4-terminal"
+execute "update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal.wrapper"
 
 directory "/home/ubuntu" do
   action :nothing
