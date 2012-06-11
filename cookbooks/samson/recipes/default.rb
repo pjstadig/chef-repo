@@ -131,6 +131,8 @@ execute "update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal.w
 
 package "dconf-tools"
 
+package "fonts-inconsolata"
+
 directory "/home/ubuntu" do
   action :nothing
   recursive true
