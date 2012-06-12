@@ -133,6 +133,8 @@ package "dconf-tools"
 
 package "fonts-inconsolata"
 
+package "openssh-server"
+
 directory "/home/ubuntu" do
   action :nothing
   recursive true
