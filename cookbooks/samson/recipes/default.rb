@@ -135,6 +135,8 @@ package "fonts-inconsolata"
 
 package "openssh-server"
 
+package "pidgin"
+
 directory "/home/ubuntu" do
   action :nothing
   recursive true
