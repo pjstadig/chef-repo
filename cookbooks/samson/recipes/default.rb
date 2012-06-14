@@ -81,7 +81,7 @@ package "lib32gcc1"
 
 directory "/var/cache/tmp"
 
-skype_deb = "skype-ubuntu_2.2.0.35-1_amd64.deb"
+skype_deb = "skype-ubuntu_4.0.0.7-1_amd64.deb"
 remote_file "/var/cache/tmp/#{skype_deb}" do
   action :create_if_missing
   backup false
