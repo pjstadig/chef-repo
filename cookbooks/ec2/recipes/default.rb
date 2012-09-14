@@ -18,3 +18,6 @@
 #
 include_recipe "ubuntu"
 include_recipe "paul"
+
+package "emacs"
+package "unattended-upgrades"
