@@ -24,26 +24,7 @@ apt_repository "canonical-partner" do
 end
 
 include_recipe "ubuntu"
-
-group "paul" do
-  gid 6000
-end
-
-user "paul" do
-  uid 6000
-  gid 6000
-  home "/home/paul"
-  shell "/bin/bash"
-  password "$6$HoaaEPjYjAwHa$Y5jdhVp9obeCH4PKlceyLtLUegNxCkG8ZsOViNanuoiVPdyPQLlvwgPCZh1yF7T1sYulxHp0jk5RBs0mS75a00"
-  supports :manage_home => true
-end
-
-%w{adm cdrom sudo dip plugdev lpadmin sambashare}.each do |g|
-  group g do
-    members ["paul"]
-    append true
-  end
-end
+include_recipe "paul"
 
 package "emacs"
 package "rlwrap"
