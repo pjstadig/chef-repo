@@ -35,3 +35,21 @@ end
     append true
   end
 end
+
+directory "/home/ubuntu" do
+  action :nothing
+  recursive true
+  ignore_failure true
+end
+
+user "ubuntu" do
+  action :remove
+  ignore_failure true
+  notifies :delete, resources(:directory => "/home/ubuntu"), :immediately
+end
+
+group "ubuntu" do
+  action :remove
+  ignore_failure true
+  notifies :delete, resources(:directory => "/home/ubuntu"), :immediately
+end
