@@ -21,3 +21,4 @@ include_recipe "paul"
 
 package "emacs"
 package "unattended-upgrades"
+package "mosh"
