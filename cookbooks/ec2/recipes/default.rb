@@ -21,4 +21,12 @@ include_recipe "paul"
 
 package "emacs"
 package "unattended-upgrades"
+
+cookbook_file "/etc/apt/apt.conf.d/10periodic" do
+  source "10periodic"
+  mode 00644
+  owner "root"
+  group "root"
+end
+
 package "mosh"
