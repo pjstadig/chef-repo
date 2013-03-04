@@ -27,6 +27,7 @@ user "paul" do
   shell "/bin/bash"
   password "$6$HoaaEPjYjAwHa$Y5jdhVp9obeCH4PKlceyLtLUegNxCkG8ZsOViNanuoiVPdyPQLlvwgPCZh1yF7T1sYulxHp0jk5RBs0mS75a00"
   supports :manage_home => true
+  not_if "getent passwd paul"
 end
 
 %w{adm cdrom sudo dip plugdev lpadmin sambashare}.each do |g|
