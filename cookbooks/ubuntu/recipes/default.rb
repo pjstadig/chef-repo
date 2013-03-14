@@ -25,3 +25,21 @@ template "/etc/apt/sources.list" do
   notifies :run, resources(:execute => "apt-get update"), :immediately
   source "sources.list.erb"
 end
+
+directory "/home/ubuntu" do
+  action :nothing
+  recursive true
+  ignore_failure true
+end
+
+user "ubuntu" do
+  action :remove
+  ignore_failure true
+  notifies :delete, resources(:directory => "/home/ubuntu"), :immediately
+end
+
+group "ubuntu" do
+  action :remove
+  ignore_failure true
+  notifies :delete, resources(:directory => "/home/ubuntu"), :immediately
+end
