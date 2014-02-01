@@ -117,3 +117,10 @@ package "fonts-inconsolata"
 package "openssh-server"
 
 package "pidgin"
+
+cookbook_file "/usr/share/X11/xorg.conf.d/10-thinkpad.conf" do
+  source "10-thinkpad.conf"
+  mode 00644
+  owner "root"
+  group "root"
+end
