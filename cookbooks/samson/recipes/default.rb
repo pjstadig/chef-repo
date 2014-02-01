@@ -118,6 +118,8 @@ package "openssh-server"
 
 package "pidgin"
 
+package "tmux"
+
 cookbook_file "/usr/share/X11/xorg.conf.d/10-thinkpad.conf" do
   source "10-thinkpad.conf"
   mode 00644
