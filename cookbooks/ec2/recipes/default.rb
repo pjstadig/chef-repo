@@ -30,3 +30,4 @@ cookbook_file "/etc/apt/apt.conf.d/10periodic" do
 end
 
 package "mosh"
+package "znc"
